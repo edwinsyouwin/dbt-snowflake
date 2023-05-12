@@ -3,5 +3,5 @@ select
     created as order_date,
     paymentmethod as payment_type,
     amount / 100 as amount
-from raw.stripe.payment
+from {{ source('stripe', 'payment') }}
 where status = 'success'
